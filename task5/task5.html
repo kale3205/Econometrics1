@@ -122,37 +122,35 @@ $(document).ready(function () {
 <h2>TASK 5</h2>
 <p>install.packages(“prob”)</p>
 <p>library(prob)</p>
-<p>dr&lt;- sample(1:6, size = 3, replace = T)</p>
-<p>S &lt;-replicate(10^5, sum(dr))</p>
+<p>n &lt;- 10^5</p>
+<p>S &lt;- replicate(n,sum(sample(1:6, 3, replace = TRUE)))</p>
 <p>head(S, 15)</p>
 </div>
 <div id="teorinis-skirstinys" class="section level2">
 <h2>Teorinis skirstinys</h2>
-<p>St &lt;- rolldie(3, nsides = 6, makespace = T)</p>
+<p>St &lt;- rolldie(3, nsides = 6, makespace = TRUE)</p>
 <p>St &lt;- addrv(St, sum = X1 + X2 + X3)</p>
 <p>teor &lt;- marginal(St, vars=“sum”)</p>
 <p>teor</p>
 </div>
 <div id="tankis-ir-santykinis-daznis" class="section level2">
 <h2>Tankis ir santykinis daznis</h2>
-<p>cbind(as.data.frame(table(S)/10^5), teor)</p>
-<p>plot(table(S)/10^5, xlab=“Suma”, ylab=“Tikimybė”)</p>
+<p>cbind(as.data.frame(table(S)/n), teor)</p>
+<p>plot(table(S)/n, xlab=“Suma”, ylab=“Tikimybė”)</p>
 <p>points(teor, col=2)</p>
 </div>
 <div id="vidurkis-ir-dispersija" class="section level2">
 <h2>Vidurkis ir dispersija</h2>
 <p>average &lt;- sum(teor<span class="math inline">\(probs * teor\)</span>sum)</p>
 <p>average</p>
-<p>dis &lt;- sum((teor<span class="math inline">\(probs * (teor\)</span>sum-average)) * (teor<span class="math inline">\(probs * (teor\)</span>sum-average)))</p>
-<p>dis</p>
-<p>plot(cumsum(S)/1:10^5, type=“l”, xlab=“10^5”, ylab = “S / 10^5”, main=“Vidurkio artėjimas į teorinį”)</p>
+<p>disp &lt;- sum(teor<span class="math inline">\(probs * (teor\)</span>sum-average)^2)</p>
+<p>disp</p>
+<p>plot(cumsum(S)/1:n, type=“l”, xlab=“n”, ylab = “S / n”, main=“Vidurkio artėjimas į teorinį”)</p>
 <p>abline(h=average, col=2)</p>
 <p>a=S*0</p>
-<p>for(i in 1:10000){</p>
-<pre><code>a[i]=var(S[1:i])</code></pre>
-<p>}</p>
-<p>plot(a[1:10000], type=“l”, xlab=“10^5”, ylab=“dis”, main=“Dispersijos artėjimas į teorinę”)</p>
-<p>abline(h=dis, col=2)</p>
+<p>for(i in 1:10000){ a[i]=var(S[1:i]) }</p>
+<p>plot(a[1:10000], type=“l”, xlab=“n”, ylab=“varS”, main=“Dispersijos artėjimas į teorinę”)</p>
+<p>abline(h=disp, col=2)</p>
 </div>
 <div id="sources" class="section level2">
 <h2>Sources</h2>
