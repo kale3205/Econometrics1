@@ -1,0 +1,21 @@
+{
+    "collab_server" : "",
+    "contents" : "## TASK 5\n\n\ninstall.packages(\"prob\")\n\nlibrary(prob)\n\ndr<- sample(1:6, size = 3, replace = T)\n\nS <-replicate(10^5, sum(dr))\n\nhead(S, 15)\n\n## Teorinis skirstinys\n\n\nSt <- rolldie(3, nsides = 6, makespace = T)\n\nSt <- addrv(St, sum = X1 + X2 + X3)\n\nteor<- marginal(distr, vars=\"sum\")\n\nteor\n\ncbind(as.data.frame(table(S)/n), S_teor)\n\nplot(table(S)/n, xlab=\"Suma\", ylab=\"Tikimybė\")\n\npoints(S_teor, col=2)\n\n##Tankis ir santykinis daznis\n\n\nplot(table(allsum)/1000, xlab=\"Sum\", ylab=\"Prob\")\n\nlines(theor, col=2)\n\n## Vidurkis ir dispersija\n\n\naverage <- sum(teor$probs * teor$sum)\n\naverage\n\ndis <- sum((teor$probs * (teor$sum-average)) * (teor$probs * (teor$sum-average)))\n\ndis\n\nplot(cumsum(S)/1:10^5, type=\"l\", xlab=\"10^5\", ylab = \"S / 10^5\", main=\"Vidurkio artėjimas į teorinį\")\n\nabline(h=average, col=2)\n\na=S*0\n\nfor(i in 1:10000){\n\n    a[i]=var(S[1:i])\n}\n\n\nplot(a[1:10000], type=\"l\", xlab=\"10^5\", ylab=\"dis\", main=\"Dispersijos artėjimas į teorinę\")\n\nabline(h=dis, col=2)\n\n## Sources\n\n\nhttps://cran.r-project.org/web/packages/IPSUR/vignettes/IPSUR.pdf\nhttp://stackoverflow.com/questions/14820203/simulating-rolling-two-dice\nhttp://ditraglia.com/Econ103Public/Rtutorials/Rtutorial4.html\nhttps://cran.r-project.org/web/packages/dice/dice.pdf\nhttps://cran.r-project.org/web/packages/prob/vignettes/prob.pdf\nEmilija Rudytė\nSimona Gritytė, Orinta Jautakaitė, Sandra Kozlovskaja, Agnė Zavackaitė\n",
+    "created" : 1474747003987.000,
+    "dirty" : false,
+    "encoding" : "UTF-8",
+    "folds" : "",
+    "hash" : "2712601949",
+    "id" : "38F9752F",
+    "lastKnownWriteTime" : 1474747183,
+    "last_content_update" : 1474747183013,
+    "path" : "C:/Users/karol/Desktop/Praktinė ekonometrija/Eko1/task5/task5.R",
+    "project_path" : "task5.R",
+    "properties" : {
+        "tempName" : "Untitled1"
+    },
+    "relative_order" : 1,
+    "source_on_save" : false,
+    "source_window" : "",
+    "type" : "r_source"
+}

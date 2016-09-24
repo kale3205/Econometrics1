@@ -1,0 +1,74 @@
+## TASK 5
+
+
+install.packages("prob")
+
+library(prob)
+
+dr<- sample(1:6, size = 3, replace = T)
+
+S <-replicate(10^5, sum(dr))
+
+head(S, 15)
+
+## Teorinis skirstinys
+
+
+St <- rolldie(3, nsides = 6, makespace = T)
+
+St <- addrv(St, sum = X1 + X2 + X3)
+
+teor<- marginal(distr, vars="sum")
+
+teor
+
+cbind(as.data.frame(table(S)/n), S_teor)
+
+plot(table(S)/n, xlab="Suma", ylab="Tikimybė")
+
+points(S_teor, col=2)
+
+##Tankis ir santykinis daznis
+
+
+plot(table(allsum)/1000, xlab="Sum", ylab="Prob")
+
+lines(theor, col=2)
+
+## Vidurkis ir dispersija
+
+
+average <- sum(teor$probs * teor$sum)
+
+average
+
+dis <- sum((teor$probs * (teor$sum-average)) * (teor$probs * (teor$sum-average)))
+
+dis
+
+plot(cumsum(S)/1:10^5, type="l", xlab="10^5", ylab = "S / 10^5", main="Vidurkio artėjimas į teorinį")
+
+abline(h=average, col=2)
+
+a=S*0
+
+for(i in 1:10000){
+
+    a[i]=var(S[1:i])
+}
+
+
+plot(a[1:10000], type="l", xlab="10^5", ylab="dis", main="Dispersijos artėjimas į teorinę")
+
+abline(h=dis, col=2)
+
+## Sources
+
+
+https://cran.r-project.org/web/packages/IPSUR/vignettes/IPSUR.pdf
+http://stackoverflow.com/questions/14820203/simulating-rolling-two-dice
+http://ditraglia.com/Econ103Public/Rtutorials/Rtutorial4.html
+https://cran.r-project.org/web/packages/dice/dice.pdf
+https://cran.r-project.org/web/packages/prob/vignettes/prob.pdf
+Emilija Rudytė
+Simona Gritytė, Orinta Jautakaitė, Sandra Kozlovskaja, Agnė Zavackaitė

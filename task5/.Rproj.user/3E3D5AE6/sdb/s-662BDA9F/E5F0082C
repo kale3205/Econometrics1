@@ -1,0 +1,20 @@
+{
+    "collab_server" : "",
+    "contents" : "\n  \n  ```{r setup, include=FALSE}\nknitr::opts_chunk$set(echo = TRUE)\n```\n\n## DICE ROLL\n\ninstall.packages(\"prob\")\n \nlibrary(prob)\n\ndr<- sample(1:6, size = 3, replace = T)\n\nsum(dr)\n\nallsum <-replicate(1000, sum(sample(1:6, size = 3, replace = T)))\n\nsum(sample(1:6, size = 3, replace = T))\n\n## TEORINIS SKIRSTINYS\n\ndistr <- rolldie(3, nsides = 6, makespace = T)\n\ndistr <- addrv(distr, sum = X1 + X2 + X3)\n\ntheor <- marginal(distr, vars=\"sum\")\n\n\n## TANKIS IR SANTYKINIS DAZNIS\n\nplot(table(allsum)/1000, xlab=\"Sum\", ylab=\"Prob\")\n\nlines(theor, col=2)\n\n\n## VIDURKIS IR DISPERSIJA\n\naverage <- sum(theor$probs * theor$sum)\n\ndis <- sum((theor$probs * (theor$sum-average)) * (theor$probs * (theor$sum-average)))\n\n\n## SOURCES\n\nhttps://cran.r-project.org/web/packages/IPSUR/vignettes/IPSUR.pdf\n\nhttp://stackoverflow.com/questions/14820203/simulating-rolling-two-dice\n\nhttp://ditraglia.com/Econ103Public/Rtutorials/Rtutorial4.html\n\nhttps://cran.r-project.org/web/packages/dice/dice.pdf\n\nhttps://cran.r-project.org/web/packages/prob/vignettes/prob.pdf\n\nEmilijos Rudytes pagalba\n",
+    "created" : 1474747467695.000,
+    "dirty" : false,
+    "encoding" : "UTF-8",
+    "folds" : "",
+    "hash" : "1501037544",
+    "id" : "E5F0082C",
+    "lastKnownWriteTime" : 1474608679,
+    "last_content_update" : 1474608679,
+    "path" : "C:/Users/karol/Desktop/task2/task2.Rmd",
+    "project_path" : null,
+    "properties" : {
+    },
+    "relative_order" : 3,
+    "source_on_save" : false,
+    "source_window" : "",
+    "type" : "r_markdown"
+}

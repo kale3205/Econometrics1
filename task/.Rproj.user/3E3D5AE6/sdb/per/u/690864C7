@@ -1,0 +1,21 @@
+{
+    "collab_server" : "",
+    "contents" : "library(prob)\n\ndice.roll <- sample(1:6, size = 3, replace = TRUE)\n\nsum(dice.roll)\n\nS <-replicate(1000, sum(sample(1:6, size = 3, replace = TRUE)))\n\nsum(sample(1:6, size = 3, replace = TRUE))\n",
+    "created" : 1474490864609.000,
+    "dirty" : true,
+    "encoding" : "",
+    "folds" : "",
+    "hash" : "3304143774",
+    "id" : "690864C7",
+    "lastKnownWriteTime" : 2484628536874007931,
+    "last_content_update" : 1474490870273,
+    "path" : null,
+    "project_path" : null,
+    "properties" : {
+        "tempName" : "Untitled1"
+    },
+    "relative_order" : 1,
+    "source_on_save" : false,
+    "source_window" : "",
+    "type" : "r_source"
+}
