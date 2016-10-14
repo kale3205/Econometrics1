@@ -1,0 +1,27 @@
+---
+title: "CRT"
+output: html_document
+---
+  
+  ```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = TRUE)
+```
+
+Rulete. Nagrinėkime standartinę kazino ruletę. Kokia tikimybė, kad po $1000$ vienodų statymų ant vienos pasirinktos spalvos, bus teigiamas balansas? Raskite apytikslę $x$ reikšmę, kuriai galioja nelygybe $P(balansas<x) = 0.25$.
+
+```{r}
+n <- 100000
+balansas <- c(rep(0, times=n))
+teigiamas <- c(rep(0, times=n))
+for (i in 1:n) {
+  balansas[i] <- sum(sample(c(1,-1), size=1000, replace=TRUE, prob=c(18/37, 19/37)))
+  if (balansas[i] > 0) {
+    teigiamas[i] <- 1}
+  else {
+    teigiamas[i] <- 0}}
+mean(teigiamas)
+X <- quantile(balansas, probs=0.25)
+
+```
+
+Sources : Kolegu pagalba

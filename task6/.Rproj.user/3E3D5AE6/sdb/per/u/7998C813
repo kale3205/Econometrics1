@@ -1,0 +1,21 @@
+{
+    "collab_server" : "",
+    "contents" : "## Kauliukai. \n\nDu žaidėjai žaidžia tokį žaidimą. Pirmasis žaidėjas meta tris kauliukus ir fiksuoja \niškritusių taškų sumą. Antrasis žaidėjas ridena du kauliukus ir skaičiuoja iškritusių\ntaškų sumą. Laimi tas žaidėjas, kurio taškų suma yra didesnė. Jeigu taškų sumos yra \nlygios, tai ekspermentas kartojamas iš naujo (ir taip kartojama tol, kol \ngaliausiai nustatomas laimėtojas). Kokia tikimybė laimėti pirmajam žaidėjui?\n\n```{r setup, include=FALSE}\nknitr::opts_chunk$set(echo = TRUE)\n```\n\n\n\n```{r}\nn = 1000\npirmasis <- replicate(sample(1:6, 3, replace = TRUE))\nantrasis <- replicate(sample(1:6, 2, replace = TRUE))\n\n\n```",
+    "created" : 1475821157690.000,
+    "dirty" : true,
+    "encoding" : "",
+    "folds" : "",
+    "hash" : "1375520796",
+    "id" : "7998C813",
+    "lastKnownWriteTime" : 22518200007655535,
+    "last_content_update" : 1475822432304,
+    "path" : null,
+    "project_path" : null,
+    "properties" : {
+        "tempName" : "Untitled1"
+    },
+    "relative_order" : 1,
+    "source_on_save" : false,
+    "source_window" : "",
+    "type" : "r_source"
+}
