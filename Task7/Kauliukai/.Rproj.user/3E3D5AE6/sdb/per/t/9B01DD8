@@ -1,0 +1,21 @@
+{
+    "collab_server" : "",
+    "contents" : "a) Tegul $x_1, ..., X_{100} \\sim N(1, 2)$. Susigeneruokite tokią imtį ir patikrinkite nulinę hipotezę, kad $H_0: \\mu=1$, su alternatyva, kad $\\mu\\neq 1$. Tam rekalinga funkcija t.test. Detaliai paaiškinkite ką reiškia funkcijos išvestyje pateikti skaičiai.\n\nb) Kartokite a) dalies generavima daug kartų (pvz.10^4) ir suskaičiuokite kiek atvejų buvo atmesta nulinė hipotezė? Išreiškite šį skaičių procentais. Kokią išvadą galite padaryti?\n\na) H_0:mu = 1\n   H_0:mu != 1\n   \nn=100\nrnorm(n,1,2)\n\nt.test.twoTails <- function(a, mu0, alpha)\n{\n  t.stat <- abs((mean(a) - mu1)) / (sqrt(var(a) / length(a)))\n  dof <- length(a) - 1\n  t.critical <- qt(1-alpha/2, df= dof) #Es alpha 0.05 -> -1.9599 (df=Inf)\n  p.value <- 2*(1-pt(t.stat, df= dof))\n  \n  if(t.stat >= t.critical)\n  {\n    print(\"Reject H0\")\n  }\n  else\n  {\n    print(\"Accept H0\")\n  }\n  print('T statistic')\n  print(t.stat)\n  print('T critical values')\n  print(c(-t.critical,t.critical))\n  print('P value')\n  print(p.value)\n  print(\"#####################\")\n  \n  return(t.stat)\n}\n\nt.test.twoTails(dataa, 73, 0.05)\n",
+    "created" : 1476961693591.000,
+    "dirty" : false,
+    "encoding" : "UTF-8",
+    "folds" : "",
+    "hash" : "477414300",
+    "id" : "9B01DD8",
+    "lastKnownWriteTime" : 1477030792,
+    "last_content_update" : 1477030792573,
+    "path" : "C:/Users/karol/Desktop/task10.R",
+    "project_path" : null,
+    "properties" : {
+        "tempName" : "Untitled1"
+    },
+    "relative_order" : 1,
+    "source_on_save" : false,
+    "source_window" : "",
+    "type" : "r_source"
+}
