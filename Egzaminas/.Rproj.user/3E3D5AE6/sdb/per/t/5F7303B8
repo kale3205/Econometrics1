@@ -1,0 +1,21 @@
+{
+    "collab_server" : "",
+    "contents" : "---\ntitle: \"Užduotis 3\"\nauthor: \"Karolina\"\ndate: '2017 m sausis 20 d '\noutput: html_document\n---\n\n```{r setup, include=FALSE}\nknitr::opts_chunk$set(echo = TRUE)\n```\n\nFaile 'data_a.csv' yra pateikti duomenys reikalingi tiesinės regresijos tyrimui. Duomenų masyvo aprašymas pateiktas minėto failo pradžioje.\n\nDuomenų apžvalga ir paruošimas. Šioje dalyje jums reikia susipažinti su duomenimis ir paruošti duomenis tolimesnei analizei.\n\na) Nuskaitykite duomenų masyvą. Jeigu įmanoma, nekoreguokite originalaus failo.\n\n```{r}\ndata1 <- read.csv(\"https://raw.githubusercontent.com/1vbutkus/Econometrics1/master/Egzaminas/data.csv\", stringsAsFactors=FALSE, skip = 7, sep = \";\")\n```\nb) Paruoškite duomenis naudojimui. Jūs turite užtikrinti, kad:\n\nNeliko įrašų su trūkstamomis reikšmėmis - jeigu šalinote įrašus, tai būtinai raportuokite kiek įrašų pašalinta ir kiek liko.\n\nDuomenų masyve nėra kažkokių klaidų (pvz. negalimos reikšmės, neteisingas duomenų tipas, t.t.). Patartina patikrinti visų duomenų tipus, nes kartais nuskaitymo procedūra suinterpretuoja duoenis ne taip kaip tikimasi.\n\n```{r}\nsapply(data1, class)  # atskiriam kiekvieną stulpelį, kad galėtumėm atskirai koreguoti\n# Matome, kad kainos ir amžiaus tipai yra blogi, turi būti integer. \ndata1$kaina <- as.numeric(data1$kaina)   # pakeičiame kainos tipą iš character į numeric\ndata1$amzius <- as.numeric(data1$amzius)  # pakeičiame amžiaus tipą iš character į numeric\nsapply(data1, class)   # pasižiūrim ar tikrai pasikeitė tipai\n\n```\n\nc) Pateikite trumpą kintamųjų apžvalgą. Naudokite tik tuos duomenis (ir kintamuosius), kuriuos planuojate taikyti tyrimui, t.y. jei reikėjo ką nors modifikuoti, tai senųjų reikšmių naudoti nebereikia. Šiai apžvalgai užtenka informacijos, kurią pateikia funkcijos plot, summary ir cor.\n\n```{r}\nsummary(data1)\n```\n\nd) Duomenų masyvą suskaidykite į du atskirus ir nesikertančius masyvus. Didesnį masyvą turi sudaryti apie 80 proc. turimų stebėjimų. Šį masyvą vadinsime trainSet. Mažesnį masyvą turi sudaryti likę įrašai. Šį masyvą vadinsime testSet. Duomenų suskaidymas turi būti atsitiktinis. Gali būti naudingos šios funkcijos:sample, setdiff, %in%.\n\nTiesinio modelio sudarymas. Modelio sudarymui naudokite trainSet masyvą.\n\na) Įvertinkite tiesinį modelių, kuriame prognozuojamas kintamasis būtų kaina. Ji turi tiesiškai priklausyti nuo kitų kintamųjų.\n\nb) Ar visi įtraukti kintamieji daro reikšmingą įtaką prognozei? Jei ne, koreguokite modelį, kad visi kintamieji darytų reikšmingą įtaką. Šį įvertintą modelį žymėsime fit. Užrašykite šio modelio matematinę lygtį.\n\nc) Patikrinkite ar modelio paklaidas galime laikyti normaliomis.\n\nModelių palyginimas ir prognozė.\n\na) Suskaičiuokite modelio fit1 RMSE (Root Mean Squere Error), kuris apibrėžiamas taip $$ RMSE = \\sqrt{\\frac{1}{n} \\sum_{i=1}^n \\varepsilon_t^2}.$$\n\nRMSE suskaičiuokite abiem duomenų masyvams trainSet ir testSet. Rezultatus sudėkite į lentelę. Palyginkite rezultatus ir padarykite išvadas.\n\nb) Išbrėžkite sklaidos diagramą, kurioje $x$ ašyje būtų fit1 modelio testSet prognozė, o $y$ ašyje faktinės testSet kainų reikšmės. Ant šios sklaidos diagramos išbrėžkite dvi linijas, kurios žymėtų prognozės pasikliautinus intervalus (pasikliovimo lygmuo 90 proc.).\n\nc) Kiek procentų prognozuotų reikšmių nepateko į pasikliautinus intervalus?",
+    "created" : 1484898799930.000,
+    "dirty" : false,
+    "encoding" : "UTF-8",
+    "folds" : "",
+    "hash" : "2360564258",
+    "id" : "5F7303B8",
+    "lastKnownWriteTime" : 1484904357,
+    "last_content_update" : 1484904357096,
+    "path" : "C:/Users/karol/Desktop/Praktinė ekonometrija/Eko1/Egzaminas/Užduotis 3.Rmd",
+    "project_path" : "Užduotis 3.Rmd",
+    "properties" : {
+        "tempName" : "Untitled1"
+    },
+    "relative_order" : 3,
+    "source_on_save" : false,
+    "source_window" : "",
+    "type" : "r_markdown"
+}

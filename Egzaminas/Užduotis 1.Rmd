@@ -1,0 +1,46 @@
+---
+title: "Užduotis 1"
+author: "Karolina"
+date: '2017 m sausis 20 d '
+output: html_document
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = TRUE)
+```
+
+Sugeneruokite x su pateiktu R kodu.
+
+set.seed(1234567890)
+x <- rnorm(5000)
+a) Suraskite x vidukio ir standartinio nuokrypio įverčius.
+
+b) Raskite x išskirtis. Šioje užduotyje, išskirtimis laikome reikšmes, kurios nepakliūna į intervalą $$[\bar{X} - 3\hat{sd}]; \bar{X} + 3\hat{sd}].$$ Čia $\bar{X}$ ir $\hat{sd}$ atitinkamai žymi vidukio ir standartinio nuokrypio įverčius. Atsakymui pateikite ir reikšmes, ir atitinkamus reikšmių indeksus.
+
+c) Pašalinkite rastas išskirtis iš x vektorius ir nubrėžkite atnaujinto x histogramą.
+
+
+#a)
+```{r}
+set.seed(1234567890)
+x <- rnorm(5000)
+vidurkis <- mean(x)  # apskaičiuojamas vidurkis
+stand <- sd(x)   # apskaičiuojamas standartinis nuokrypis
+```
+
+
+#b)
+```{r}
+indeksai <- which((x < vidurkis - 3*stand) | (x > vidurkis + 3*stand)) # randami indeksai iš intervalo
+isskirtys <- x[indeksai]  # tuomet randamos išskirtys
+names(isskirtys) = indeksai # prie kiekvienos reikšmės, kad eitų kartu ir indeksai
+isskirtys # atsakymas
+
+```
+
+
+#c)
+```{r}
+atnaujintas <- x[-indeksai]  # sukūriamas naujas x, kuriame nebėra išskirčių
+hist(atnaujintas, main = "Atnaujinto x Histograma", xlab = "x", ylab = "dažnis" )
+```

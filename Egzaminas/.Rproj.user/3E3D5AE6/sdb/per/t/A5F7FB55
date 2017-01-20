@@ -1,0 +1,21 @@
+{
+    "collab_server" : "",
+    "contents" : "---\ntitle: \"Užduotis 2\"\nauthor: \"Karolina\"\ndate: '2017 m sausis 20 d '\noutput: html_document\n---\n\n```{r setup, include=FALSE}\nknitr::opts_chunk$set(echo = TRUE)\n```\n\nTarkime $X_1$ ir $X_2$ yra nepriklausomi, $X_1 \\sim N(3, 2)$, $X_2 \\sim N(-1, 3)$ ir $X = X_1 + X_2$.\n\na) Raskite $X$ teorinį skirstinį. Išbrėžkite tankio grafiką. Pastaba: labai naudinga savybė, kad dviejų natūraliųjų dydžių suma taip pat yra natūralusis dydis.\n\n```{r}\nx = rnorm(10000, mean = 2, sd = sqrt(5))   # gauname bendrą x1 ir x2 x-ą, kurio reikšmės yra x1 ir x2 suma\nx1 = rnorm(10000, mean = 3, sd = sqrt(2))\nx2 = rnorm(10000, mean = -1, sd = sqrt(3))\nx0 = x1 + x2    # \nplot(x, dnorm(x, mean = 2, sd = sqrt(5)), ylab = \"tankis\", main = \"Tankio grafikas\")   \nlines(density(x0), col = 7)   # nubrėžiame tankio grafiką\n\n```\n\nb) Sugeneruokite $X$ imtį ($N=10000$) pagal pateiktą $X$ apibrėžimą.\n\nc) Palyginkite sugeneruotą $X$ empirinį skirstinį su teorinį skirstiniu.\nPalyginimui pateikite tankių grafikus ir skirstinių charakteristikas (vidurkį, medianą ir standartinį nuokrypį).\n\n```{r}\nplot(x, dnorm(x, mean = 2, sd = sqrt(5)), ylab = \"tankis\", main = \"Tankio grafikas\")   \nlines(density(x0), col = 7)   # nubrėžiame tankio grafiką\nmean(x)\nsd(x)\nmedian(x)\nmean(x0)\nsd(x0)\nmedian(x0)\n```\nd) Raskite teorinę įvykio $|X| > 2$ tikimybę (konkreti neatsitikinė konstanta).\n\ne) Įvertinkite įvykio $|X| > 2$ tikimybę naudojantis Monte-Carlo metodu.\n",
+    "created" : 1484897152198.000,
+    "dirty" : false,
+    "encoding" : "UTF-8",
+    "folds" : "",
+    "hash" : "1170404068",
+    "id" : "A5F7FB55",
+    "lastKnownWriteTime" : 1484906257,
+    "last_content_update" : 1484906257762,
+    "path" : "C:/Users/karol/Desktop/Praktinė ekonometrija/Eko1/Egzaminas/Užduotis 2.Rmd",
+    "project_path" : "Užduotis 2.Rmd",
+    "properties" : {
+        "tempName" : "Untitled1"
+    },
+    "relative_order" : 2,
+    "source_on_save" : false,
+    "source_window" : "",
+    "type" : "r_markdown"
+}

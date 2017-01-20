@@ -1,0 +1,21 @@
+{
+    "collab_server" : "",
+    "contents" : "---\ntitle: \"Užduotis 1\"\nauthor: \"Karolina\"\ndate: '2017 m sausis 20 d '\noutput: html_document\n---\n\n```{r setup, include=FALSE}\nknitr::opts_chunk$set(echo = TRUE)\n```\n\nSugeneruokite x su pateiktu R kodu.\n\nset.seed(1234567890)\nx <- rnorm(5000)\na) Suraskite x vidukio ir standartinio nuokrypio įverčius.\n\nb) Raskite x išskirtis. Šioje užduotyje, išskirtimis laikome reikšmes, kurios nepakliūna į intervalą $$[\\bar{X} - 3\\hat{sd}]; \\bar{X} + 3\\hat{sd}].$$ Čia $\\bar{X}$ ir $\\hat{sd}$ atitinkamai žymi vidukio ir standartinio nuokrypio įverčius. Atsakymui pateikite ir reikšmes, ir atitinkamus reikšmių indeksus.\n\nc) Pašalinkite rastas išskirtis iš x vektorius ir nubrėžkite atnaujinto x histogramą.\n\n\n#a)\n```{r}\nset.seed(1234567890)\nx <- rnorm(5000)\nvidurkis <- mean(x)  # apskaičiuojamas vidurkis\nstand <- sd(x)   # apskaičiuojamas standartinis nuokrypis\n```\n\n\n#b)\n```{r}\nindeksai <- which((x < vidurkis - 3*stand) | (x > vidurkis + 3*stand)) # randami indeksai iš intervalo\nisskirtys <- x[indeksai]  # tuomet randamos išskirtys\nnames(isskirtys) = indeksai # prie kiekvienos reikšmės, kad eitų kartu ir indeksai\nisskirtys # atsakymas\n\n```\n\n\n#c)\n```{r}\natnaujintas <- x[-indeksai]  # sukūriamas naujas x, kuriame nebėra išskirčių\nhist(atnaujintas, main = \"Atnaujinto x Histograma\", xlab = \"x\", ylab = \"dažnis\" )\n```\n",
+    "created" : 1484896281495.000,
+    "dirty" : false,
+    "encoding" : "UTF-8",
+    "folds" : "",
+    "hash" : "82667661",
+    "id" : "ED751D05",
+    "lastKnownWriteTime" : 1484898719,
+    "last_content_update" : 1484898719002,
+    "path" : "C:/Users/karol/Desktop/Praktinė ekonometrija/Eko1/Egzaminas/Užduotis 1.Rmd",
+    "project_path" : "Užduotis 1.Rmd",
+    "properties" : {
+        "tempName" : "Untitled1"
+    },
+    "relative_order" : 1,
+    "source_on_save" : false,
+    "source_window" : "",
+    "type" : "r_markdown"
+}

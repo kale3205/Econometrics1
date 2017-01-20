@@ -1,0 +1,60 @@
+---
+title: "Užduotis 3"
+author: "Karolina"
+date: '2017 m sausis 20 d '
+output: html_document
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = TRUE)
+```
+
+Faile 'data_a.csv' yra pateikti duomenys reikalingi tiesinės regresijos tyrimui. Duomenų masyvo aprašymas pateiktas minėto failo pradžioje.
+
+Duomenų apžvalga ir paruošimas. Šioje dalyje jums reikia susipažinti su duomenimis ir paruošti duomenis tolimesnei analizei.
+
+a) Nuskaitykite duomenų masyvą. Jeigu įmanoma, nekoreguokite originalaus failo.
+
+```{r}
+data1 <- read.csv("https://raw.githubusercontent.com/1vbutkus/Econometrics1/master/Egzaminas/data.csv", stringsAsFactors=FALSE, skip = 7, sep = ";")
+```
+b) Paruoškite duomenis naudojimui. Jūs turite užtikrinti, kad:
+
+Neliko įrašų su trūkstamomis reikšmėmis - jeigu šalinote įrašus, tai būtinai raportuokite kiek įrašų pašalinta ir kiek liko.
+
+Duomenų masyve nėra kažkokių klaidų (pvz. negalimos reikšmės, neteisingas duomenų tipas, t.t.). Patartina patikrinti visų duomenų tipus, nes kartais nuskaitymo procedūra suinterpretuoja duoenis ne taip kaip tikimasi.
+
+```{r}
+sapply(data1, class)  # atskiriam kiekvieną stulpelį, kad galėtumėm atskirai koreguoti
+# Matome, kad kainos ir amžiaus tipai yra blogi, turi būti integer. 
+data1$kaina <- as.numeric(data1$kaina)   # pakeičiame kainos tipą iš character į numeric
+data1$amzius <- as.numeric(data1$amzius)  # pakeičiame amžiaus tipą iš character į numeric
+sapply(data1, class)   # pasižiūrim ar tikrai pasikeitė tipai
+
+```
+
+c) Pateikite trumpą kintamųjų apžvalgą. Naudokite tik tuos duomenis (ir kintamuosius), kuriuos planuojate taikyti tyrimui, t.y. jei reikėjo ką nors modifikuoti, tai senųjų reikšmių naudoti nebereikia. Šiai apžvalgai užtenka informacijos, kurią pateikia funkcijos plot, summary ir cor.
+
+```{r}
+summary(data1)
+```
+
+d) Duomenų masyvą suskaidykite į du atskirus ir nesikertančius masyvus. Didesnį masyvą turi sudaryti apie 80 proc. turimų stebėjimų. Šį masyvą vadinsime trainSet. Mažesnį masyvą turi sudaryti likę įrašai. Šį masyvą vadinsime testSet. Duomenų suskaidymas turi būti atsitiktinis. Gali būti naudingos šios funkcijos:sample, setdiff, %in%.
+
+Tiesinio modelio sudarymas. Modelio sudarymui naudokite trainSet masyvą.
+
+a) Įvertinkite tiesinį modelių, kuriame prognozuojamas kintamasis būtų kaina. Ji turi tiesiškai priklausyti nuo kitų kintamųjų.
+
+b) Ar visi įtraukti kintamieji daro reikšmingą įtaką prognozei? Jei ne, koreguokite modelį, kad visi kintamieji darytų reikšmingą įtaką. Šį įvertintą modelį žymėsime fit. Užrašykite šio modelio matematinę lygtį.
+
+c) Patikrinkite ar modelio paklaidas galime laikyti normaliomis.
+
+Modelių palyginimas ir prognozė.
+
+a) Suskaičiuokite modelio fit1 RMSE (Root Mean Squere Error), kuris apibrėžiamas taip $$ RMSE = \sqrt{\frac{1}{n} \sum_{i=1}^n \varepsilon_t^2}.$$
+
+RMSE suskaičiuokite abiem duomenų masyvams trainSet ir testSet. Rezultatus sudėkite į lentelę. Palyginkite rezultatus ir padarykite išvadas.
+
+b) Išbrėžkite sklaidos diagramą, kurioje $x$ ašyje būtų fit1 modelio testSet prognozė, o $y$ ašyje faktinės testSet kainų reikšmės. Ant šios sklaidos diagramos išbrėžkite dvi linijas, kurios žymėtų prognozės pasikliautinus intervalus (pasikliovimo lygmuo 90 proc.).
+
+c) Kiek procentų prognozuotų reikšmių nepateko į pasikliautinus intervalus?

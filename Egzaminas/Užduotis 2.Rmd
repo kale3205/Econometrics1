@@ -1,0 +1,43 @@
+---
+title: "Užduotis 2"
+author: "Karolina"
+date: '2017 m sausis 20 d '
+output: html_document
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = TRUE)
+```
+
+Tarkime $X_1$ ir $X_2$ yra nepriklausomi, $X_1 \sim N(3, 2)$, $X_2 \sim N(-1, 3)$ ir $X = X_1 + X_2$.
+
+a) Raskite $X$ teorinį skirstinį. Išbrėžkite tankio grafiką. Pastaba: labai naudinga savybė, kad dviejų natūraliųjų dydžių suma taip pat yra natūralusis dydis.
+
+```{r}
+x = rnorm(10000, mean = 2, sd = sqrt(5))   # gauname bendrą x1 ir x2 x-ą, kurio reikšmės yra x1 ir x2 suma
+x1 = rnorm(10000, mean = 3, sd = sqrt(2))
+x2 = rnorm(10000, mean = -1, sd = sqrt(3))
+x0 = x1 + x2    # 
+plot(x, dnorm(x, mean = 2, sd = sqrt(5)), ylab = "tankis", main = "Tankio grafikas")   
+lines(density(x0), col = 7)   # nubrėžiame tankio grafiką
+
+```
+
+b) Sugeneruokite $X$ imtį ($N=10000$) pagal pateiktą $X$ apibrėžimą.
+
+c) Palyginkite sugeneruotą $X$ empirinį skirstinį su teorinį skirstiniu.
+Palyginimui pateikite tankių grafikus ir skirstinių charakteristikas (vidurkį, medianą ir standartinį nuokrypį).
+
+```{r}
+plot(x, dnorm(x, mean = 2, sd = sqrt(5)), ylab = "tankis", main = "Tankio grafikas")   
+lines(density(x0), col = 7)   # nubrėžiame tankio grafiką
+mean(x)
+sd(x)
+median(x)
+mean(x0)
+sd(x0)
+median(x0)
+```
+d) Raskite teorinę įvykio $|X| > 2$ tikimybę (konkreti neatsitikinė konstanta).
+
+e) Įvertinkite įvykio $|X| > 2$ tikimybę naudojantis Monte-Carlo metodu.
